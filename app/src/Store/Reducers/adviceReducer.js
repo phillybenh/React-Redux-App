@@ -1,7 +1,7 @@
 const initialState = {
     slip: {
-        advice: "A common regret in life is wishing one hadn't worked so hard.",
-        slip_id: "117"
+        advice: "",
+        slip_id: ""
     },
     isFetching: false,
     error: ""
@@ -14,14 +14,17 @@ export const adviceReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: true
             };
-        case 'FETCH_ADVICE_START':
+        case 'FETCH_ADVICE_SUCCESS':
             return {
                 ...state,
                 isFetching: false,
-                quote: action.payload,
+                slip: {
+                    
+                    advice: action.payload
+                },
                 error: ''
             };
-        case 'FETCH_ADVICE_START':
+        case 'FETCH_ADVICE_FAILURE':
             return {
                 ...state,
                 isFetching: false,

@@ -2,12 +2,22 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import {fetchAdvice} from "../Store/Actions/adviceActions";
+import { fetchAdvice } from "../Store/Actions/adviceActions";
 
 const RandomAdvice = (props) => {
+  useEffect(() => {
+    props.fetchAdvice();
+  }, []);
+
   return (
     <div>
       <h2>Random Advice</h2>
+      <div className="adviceContainer">
+        {props.isFetching && (
+          <Loader type="Grid" color="#00BFFF" height={80} width={80} />
+        )}
+        {props.advice && <h3>"{props.advice}</h3>}
+      </div>
       <footer>
         <p>
           Thanks to{" "}
@@ -19,12 +29,13 @@ const RandomAdvice = (props) => {
   );
 };
 
-const mapStateToProps = state => {
-    return{
-        advice: state.advice.advice,
-        isFetching: state.advice.isFetching,
-        error: state.advice.error
-    }
-}
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    advice: state.advice.slip.advice,
+    isFetching: state.advice.isFetching,
+    error: state.advice.error,
+  };
+};
 
-export default connect(mapStateToProps, {})(RandomAdvice);
+export default connect(mapStateToProps, { fetchAdvice })(RandomAdvice);

@@ -7,8 +7,11 @@ export const fetchAdvice = () => {
         axios
             .get('https://api.adviceslip.com/advice')
             .then(response => {
-                dispatch({type: 'FETCH_ADVICE_SUCCESS',
-            payload: response.data.advice})
+                console.log("response",response)
+                dispatch({
+                    type: 'FETCH_ADVICE_SUCCESS',
+                    payload: response.data.slip.advice
+                })
             })
             .catch(error => {
                 dispatch({
