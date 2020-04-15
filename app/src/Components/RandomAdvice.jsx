@@ -11,12 +11,14 @@ const RandomAdvice = (props) => {
 
   return (
     <div>
-      <h2>Random Advice</h2>
+      <h2>Here's the random tip you need:</h2>
       <div className="adviceContainer">
         {props.isFetching && (
           <Loader type="Grid" color="#00BFFF" height={80} width={80} />
         )}
-        {props.advice && <h3>"{props.advice}</h3>}
+        {props.advice && <h3>"{props.advice}"</h3>}
+        {props.error && <p>{props.error}</p>}
+        <button onClick={props.fetchAdvice}>Try a new tip!</button>
       </div>
       <footer>
         <p>

@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Random Advice</h1>
+      <h1>Need Some Advice?</h1>
       <RandomAdvice />
    </div>
   );

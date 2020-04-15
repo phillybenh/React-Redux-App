@@ -19,7 +19,6 @@ export const adviceReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 slip: {
-                    
                     advice: action.payload
                 },
                 error: ''
