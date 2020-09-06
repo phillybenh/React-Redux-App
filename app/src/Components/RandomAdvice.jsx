@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
 import { fetchAdvice } from "../Store/Actions/adviceActions";
-import {fetchCat} from "../Store/Actions/catActions"
+import { fetchCat } from "../Store/Actions/catActions";
 
 const RandomAdvice = (props) => {
   useEffect(() => {
     props.fetchAdvice();
     props.fetchCat();
   }, []);
-console.log("props", props)
+  // console.log("props", props);
   return (
     <div>
       <h2>Here's the random tip you need:</h2>
@@ -23,7 +23,7 @@ console.log("props", props)
         <button onClick={props.fetchAdvice}>Try a new tip!</button>
         <h3>Maybe that tip was useless. This cat is sorry.</h3>
         <img src={props.cat} alt="Random image of a cat" />
-        <button onClick={props.fetchCat}>Try a new tip!</button>
+        <button onClick={props.fetchCat}>Try a new cat!</button>
       </div>
       <footer>
         <p>
